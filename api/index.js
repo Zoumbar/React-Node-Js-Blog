@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-const http = require('http').createServer(app)
+const http = require('http').createServer(express)
 const io = require('socket.io')(http)
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
@@ -42,8 +42,10 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 io.on('connection', socket => {
   socket.on('message', ({ name, message }) => {
     io.emit('message', { name, message })
+    
   })
 })
+
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
