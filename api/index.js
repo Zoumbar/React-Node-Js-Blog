@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
@@ -36,6 +38,12 @@ const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
+
+io.on('connection', socket => {
+  socket.on('message', ({ name, message }) => {
+    io.emit('message', { name, message })
+  })
+})
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
