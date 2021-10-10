@@ -43,7 +43,7 @@ export default function Messenger() {
 
 	return (
 		<div className="card">
-			<form onSubmit={onMessageSubmit}>
+			<form className="formForm" onSubmit={onMessageSubmit}>
 				<h1>Ecrivez votre message</h1>
 				<div className="name-field">
 					<TextField name="name" onChange={(e) => onTextChange(e)} value={state.name} label="Nom" />

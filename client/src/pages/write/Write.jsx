@@ -49,7 +49,7 @@ export default function Write() {
           />
           <input
             type="text"
-            placeholder="Titre"
+            placeholder="Title"
             className="writeInput"
             autoFocus={true}
             onChange={e=>setTitle(e.target.value)}
@@ -57,14 +57,14 @@ export default function Write() {
         </div>
         <div className="writeFormGroup">
           <textarea
-            placeholder="Raconte son histoire"
+            placeholder="Tell your story..."
             type="text"
             className="writeInput writeText"
             onChange={e=>setDesc(e.target.value)}
           ></textarea>
         </div>
         <button className="writeSubmit" type="submit">
-          Publier
+          Publish
         </button>
       </form>
     </div>
